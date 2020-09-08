@@ -1,0 +1,6 @@
+create table t(usn integer primary key,name varchar(20), ph_no integer, branch varchar(4));
+insert into t values(10,'tanvi',123432,'cs');
+insert into t values(11,'tajna',64443,'is');  
+insert into t values(12,'shrddha',43656,'mech');
+insert into t values(13,'teja',43569,'cs');
+insert into t values(14,'rachana',546565,'is’);
