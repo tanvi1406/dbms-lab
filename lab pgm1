@@ -1,6 +1,6 @@
-create table publisher(name varchar(20),address varchar(20),phono integer,primary key(name))
-create table book(book_id integer,title varchar(20),publisher_name varchar(20),pub_year integer,primary key(book_id),foreign key(publisher_name)references publisher(name));
-create table book_authors(book_id integer,author_name varchar(20),primary key(book_id),foreign key(book_id)references book(book_id));
-create table library_branch(branch_id integer primary key,branch_name varchar(20),address varchar(20));
-create table book_copies(book_id integer,branch_id integer,no_of_copies integer,primary key(book_id,branch_id),foreign key(book_id)references book(book_id),foreign key(branch_id)references library_branch(branch_id));
-create table book_lending(book_id integer,branch_id integer,card_no integer,date_out varchar(10),due_date varchar(10),primary key(book_id,branch_id,card_no),foreign key(book_id)references book(book_id),foreign key(branch_id)references library_branch(branch_id));
+create table PUBLISHER(name varchar(20),address varchar(20),phono integer,primary key(name));
+create table BOOK(book_id integer,title varchar(20),publisher_name varchar(20),pub_year integer,primary key(book_id),foreign key(publisher_name)references PUBLISHER(name));
+create table BOOK_AUTHORS(book_id integer,author_name varchar(20),primary key(book_id),foreign key(book_id)references BOOK(book_id));
+create table LIBRARY_BRANCH(branch_id integer primary key,branch_name varchar(20),address varchar(20));
+create table BOOK_COPIES(book_id integer,branch_id integer,no_of_copies integer,primary key(book_id,branch_id),foreign key(book_id)references BOOK(book_id),foreign key(branch_id)references LIBRARY_BRANCH(branch_id));
+create table BOOK_LENDING(book_id integer,branch_id integer,card_no integer,date_out varchar(10),due_date varchar(10),primary key(book_id,branch_id,card_no),foreign key(book_id)references BOOK(book_id),foreign key(branch_id)references LIBRARY_BRANCH(branch_id));
