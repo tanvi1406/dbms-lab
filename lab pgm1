@@ -34,3 +34,6 @@ insert into BOOK_LENDING values(20,200,202,'2020-07-10','2020-07-20');
 insert into BOOK_LENDING values(30,300,203,'2020-07-25','2020-07-30');
 insert into BOOK_LENDING values(40,400,204,'2020-08-14','2020-08-26');
 insert into BOOK_LENDING values(50,500,205,'2020-09-01','2020-09-10');
+
+Query:
+Select BOOK.Book_id,Title,Publisher_name,Author_name,No_of_copies from BOOK,BOOK_AUTHORS,BOOK_COPIES where BOOK.Book_id=BOOK_AUTHORS.Book_id and BOOK.Book_id=BOOK_COPIES.Book_id ;
