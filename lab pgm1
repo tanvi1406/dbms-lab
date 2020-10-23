@@ -35,5 +35,89 @@ insert into BOOK_LENDING values(30,300,203,'2020-07-25','2020-07-30');
 insert into BOOK_LENDING values(40,400,204,'2020-08-14','2020-08-26');
 insert into BOOK_LENDING values(50,500,205,'2020-09-01','2020-09-10');
 
-Query:
-Select BOOK.book_id,Title,Publisher_name,Authors_name,No_of_copies from BOOK,BOOK_AUTHORS,BOOK_COPIES where BOOK.book_id=BOOK_AUTHORS.book_id and BOOK.book_id=BOOK_COPIES.book_id ;
+---
+
+**Query #1**
+Select BOOK.book_id,title,publisher_name,author_name,no_of_copies from BOOK,BOOK_AUTHORS,BOOK_COPIES where BOOK.book_id=BOOK_AUTHORS.book_id and BOOK.book_id=BOOK_COPIES.book_id ;
+
+Result:
+| book_id | title | publisher_name | author_name | no_of_copies |
+| ------- | ----- | -------------- | ----------- | ------------ |
+| 10      | DBMS  | Mcgraw         | Andrew      | 20           |
+| 10      | DBMS  | Mcgraw         | Andrew      | 5            |
+| 20      | SE    | Person         | Raj Kumar   | 15           |
+| 30      | FLAT  | SAM Pub        | Samual      | 30           |
+| 40      | BDA   | IOP            | Padma       | 7            |
+
+---
+
+**Query #2**
+Select card_no From BOOK_LENDING where date_out between '2017-01-01' and '2017-06-01' group by card_no having count(card_no)>3;
+Result:
+There are no results to be displayed.
+
+---
+**Query #3**
+Delete from BOOK where Book_id=20;
+Select * from BOOK;
+Select * from BOOK_AUTHORS;
+Select * from BOOK_COPIES;
+Select * from BOOK_LENDING;
+
+Results:
+**Query #1**
+
+    Delete from BOOK where Book_id=20;
+
+There are no results to be displayed.
+
+---
+**Query #2**
+
+    Select * from BOOK;
+
+| book_id | title | publisher_name | pub_year |
+| ------- | ----- | -------------- | -------- |
+| 10      | DBMS  | Mcgraw         | 2010     |
+| 30      | FLAT  | SAM Pub        | 2019     |
+| 40      | BDA   | IOP            | 2018     |
+| 50      | MP    | IEEE           | 2020     |
+
+---
+**Query #3**
+
+    Select * from BOOK_AUTHORS;
+
+| book_id | author_name |
+| ------- | ----------- |
+| 10      | Andrew      |
+| 30      | Samual      |
+| 40      | Padma       |
+| 50      | Guru        |
+
+---
+**Query #4**
+
+    Select * from BOOK_COPIES;
+
+| book_id | branch_id | no_of_copies |
+| ------- | --------- | ------------ |
+| 10      | 100       | 20           |
+| 10      | 200       | 5            |
+| 30      | 100       | 30           |
+| 40      | 500       | 7            |
+
+---
+**Query #5**
+
+Select * from BOOK_LENDING;
+
+| book_id | branch_id | card_no | date_out   | due_date   |
+| ------- | --------- | ------- | ---------- | ---------- |
+| 10      | 100       | 201     | 2020-06-15 | 2020-06-25 |
+| 30      | 300       | 203     | 2020-07-25 | 2020-07-30 |
+| 40      | 400       | 204     | 2020-08-14 | 2020-08-26 |
+| 50      | 500       | 205     | 2020-09-01 | 2020-09-10 |
+
+---
+
