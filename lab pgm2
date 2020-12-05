@@ -80,15 +80,24 @@ SALESMAN_ID	NAME	CITY	    COMMISION
 40	       KIRAN	MYSORE	        15
 50	       SHEYA	BANGALORE	3
 
-QUERY4:
-CREATE VIEW V1 AS
-SELECT SALESMAN_ID
+QUERY 4:
+CREATE VIEW BEST_SALESMAN AS
+SELECT SALESMAN_ID ,ORD_DATE,PURCHASE_AMT
 FROM ORDERS
-GROUP BY ORD_DATE
-HAVING MAX(ORD_DATE)
+WHERE PURCHASE_AMT IN(
+  	SELECT MAX(PURCHASE_AMT)
+  	FROM ORDERS 
+  	GROUP BY ORD_DATE);
+SELECT * FROM BEST_SALESMAN;
 
 RESULTS:
-There are no results to be displayed.
+SALESMAN_ID	ORD_DATE	PURCHASE_AMT
+10	       2020-01-04	   5000
+20	       2020-02-05	   2500
+40	       2020-03-03	    500
+30	       2020-04-02	   1500
+30	       2020-01-03	   3500
+
 
 QUERY5:
 DELETE FROM SALESMAN WHERE SALESMAN_ID=10;
@@ -97,20 +106,24 @@ SELECT * FROM CUSTOMER;
 SELECT * FROM ORDERS;
 
 RESULTS:
+Query #1 Execution time: 1ms
+There are no results to be displayed.
+Query #2 Execution time: 0ms
 SALESMAN_ID	NAME	CITY	     COMMISION
 20	        RAM	BANGALORE	10
 30	        RAJ	MANGALORE	5
-40	        KIRAN	MYSORE	        15
-50	        KHAN	UDUPI	        15
+40	       KIRAN	MYSORE	        15
+50	       SHEYA	BANGALORE	3
 Query #3 Execution time: 0ms
-CUSTOMER_ID	CUST_NAME	CITY	GRADE	SALESMAN_ID
-2000	          KUMAR	      BANGALORE	200	        20
-3000	         PREETHI       MYSORE   300	        40
-4000	         SMITHA      MANGALORE	400	        30
-5000	          SARA	       MYSORE   300             50
-Query #4 Execution time: 0ms
+CUSTOMER_ID	CUST_NAME	CITY	  GRADE	  SALESMAN_ID
+1000	         AVINASH      MANGALORE	   100	   null
+2000	          KUMAR	      BANGALORE	   200	    20
+3000	         PREETHI       MYSORE	   300	    40
+4000	         SMITHA	      MANGALORE	   400	    30
+5000	        VARSHINI      BANGALORE	   400	    50
+Query #4 Execution time: 2ms
 ORD_NO	PURCHASE_AMT	ORD_DATE	CUSTOMER_ID	SALESMAN_ID
-552	   2500	       2020-02-05	2000	            20
-553	    500	       2020-03-03	3000	            40
-554	   1500	       2020-04-02	4000	            30
-556	   3500	       2020-01-03	2000	            30
+552	  2500	       2020-02-05	2000	           20
+553	  500	       2020-03-03	3000	           40
+554	  1500	       2020-04-02	4000	           30
+556	  3500	       2020-01-03	2000	           30
